@@ -1,18 +1,18 @@
 #include<stdio.h>
-#include<stdlib.h>
 
 int main(void)
 {
     int N;
-    int num;
+    char c[100];
     int result = 0;
 
     scanf("%d", &N);
-    scanf("%lld", &num);
-    while(N--)
+    for(int i = 0; i < N; i++)
     {
-        result = result + (num % 10);
-        num = num / 10;
+        scanf(" %c", &c[i]);
+        result = result + (c[i] - '0');
     }
     printf("%d",result);
+
+    return (0);
 }
