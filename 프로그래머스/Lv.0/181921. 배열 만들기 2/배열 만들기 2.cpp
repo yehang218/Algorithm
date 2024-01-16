@@ -18,6 +18,7 @@ vector<int> solution(int l, int r) {
 		{
 			if (strNum[j] == '5') check++;
 			else if (strNum[j] == '0') check++;
+			else break;
 		}
 
 		if (check == strNum.length()) {
