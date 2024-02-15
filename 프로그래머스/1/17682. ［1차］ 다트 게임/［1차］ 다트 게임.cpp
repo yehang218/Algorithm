@@ -12,7 +12,7 @@ int solution(string dartResult)
 
     for (int i = 0; i < dartResult.length(); i++)
     {
-        if (dartResult[i] >= 0 && dartResult[i] <= '9')
+        if (dartResult[i] >= '0' && dartResult[i] <= '9')
         {
             tempNum = dartResult[i] - '0';
             if (tempNum == 1 && dartResult[i + 1] == '0')
@@ -21,7 +21,7 @@ int solution(string dartResult)
                 i++;
             }
         }
-        if (dartResult[i] == 'S')
+        else if (dartResult[i] == 'S')
             vAnswer.push_back(tempNum);
         else if (dartResult[i] == 'D')
             vAnswer.push_back(tempNum * tempNum);
