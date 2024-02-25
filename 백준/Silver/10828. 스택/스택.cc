@@ -1,69 +1,53 @@
 #include <iostream>
 #include <stack>
-#include <string>
 
 using namespace std;
 
-int N; // 명령 개수
-string str_command;
-stack<string> s_strnum;
+stack<int> s;
+int num;
+
+void solve(string command)
+{
+    if (!command.compare("push"))
+    {
+        cin >> num;
+        s.push(num);
+    }
+
+    else if (!command.compare("pop"))
+    {
+        if (s.empty())
+            cout << "-1"
+                 << "\n";
+        else
+        {
+            cout << s.top() << "\n";
+            s.pop();
+        }
+    }
+
+    else if (!command.compare("size"))
+        cout << s.size() << "\n";
+
+    else if (!command.compare("empty"))
+        cout << (s.empty() ? 1 : 0) << "\n";
+
+    else if (!command.compare("top"))
+        cout << (s.empty() ? -1 : s.top()) << "\n";
+}
 
 int main(void)
 {
-    cin >> N;
-    cin.ignore();
+    ios::sync_with_stdio(false);
+    cin.tie(0);
 
+    int N;
+    string command = "";
+
+    cin >> N;
     for (int i = 0; i < N; i++)
     {
-        getline(cin, str_command);
-
-        // push인 경우
-        if (str_command.find("push") != string::npos)
-        {
-            string newstr = str_command.substr(5);
-            s_strnum.push(newstr);
-        }
-
-        // pop인 경우
-        else if (str_command.compare("pop") == 0)
-        {
-            if (s_strnum.empty() != 1)
-            {
-                cout << s_strnum.top() << "\n";
-                s_strnum.pop();
-            }
-            else
-                cout << "-1"
-                     << "\n";
-        }
-
-        // size인 경우
-        else if (str_command[0] == 's')
-        {
-            cout << s_strnum.size() << "\n";
-        }
-
-        // empty인 경우
-        else if (str_command[0] == 'e')
-        {
-            if (s_strnum.empty() == 1)
-                cout << "1"
-                     << "\n";
-            else
-                cout << "0"
-                     << "\n";
-        }
-
-        // top인 경우
-        else if (str_command[0] == 't')
-        {
-            if (s_strnum.empty() != 1)
-            {
-                cout << s_strnum.top() << "\n";
-            }
-            else
-                cout << "-1"
-                     << "\n";
-        }
+        cin >> command;
+        solve(command);
     }
 }
