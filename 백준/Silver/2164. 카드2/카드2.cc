@@ -21,11 +21,8 @@ int solve()
     while (qCards.size() > 1)
     {
         qCards.pop();
-        if (!qCards.empty())
-        {
-            qCards.push(qCards.front());
-            qCards.pop();
-        }
+        qCards.push(qCards.front());
+        qCards.pop();
     }
     return qCards.front();
 }
