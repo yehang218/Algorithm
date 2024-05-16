@@ -31,7 +31,7 @@
 
 using namespace std;
 
-long long DP[31][31];
+int DP[31][31];
 
 void SetDP()
 {
